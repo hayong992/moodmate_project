@@ -1,0 +1,29 @@
+name: Run Python Script
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 push될 때마다 실행
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest  # Ubuntu 환경에서 실행
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # 레포지토리 체크아웃
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Python 환경 설정
+        with:
+          python-version: 3.9  # Python 버전 설정
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # 의존성 패키지 설치
+
+      - name: Run Python script
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # GitHub Secrets에서 API 키 불러오기
+        run: |
+          python app.py  # app.py 파일 실행
