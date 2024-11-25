@@ -1,8 +1,12 @@
-name: Python application
+name: Python CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -15,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.9'
 
     - name: Install dependencies
       run: |
@@ -23,10 +27,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Python script
-      run: python app.py  # 'your_script.py' 대신 'app.py' 사용
-
-        echo "Running Python script"
-        python app.py  # 실제 파일 이름으로 변경
-      env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # GitHub Secrets에서 API 키 불러오기
-
+      run: python app.py  # app.py 파일을 실행하도록 수정
