@@ -22,8 +22,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run the Python script
-      run: |
+    - name: Run Python script
+      run: python app.py  # 'your_script.py' 대신 'app.py' 사용
+
         echo "Running Python script"
         python app.py  # 실제 파일 이름으로 변경
       env:
