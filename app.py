@@ -1,8 +1,8 @@
 import streamlit as st
 import openai
 
-# OpenAI API 키 설정
-openai.api_key = "your-api-key"
+# OpenAI API 키 설정 (당신이 보내준 키로 설정)
+openai.api_key = "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"
 
 # Streamlit 앱 제목
 st.title("오늘의 MoodMate 🎵🍕🌟")
